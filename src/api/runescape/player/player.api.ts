@@ -1,7 +1,7 @@
 import got from 'got';
-import {GameMode, player} from '../../../configs/runescape.constants';
-import {Profile, Quest, RawProfile} from './player.models';
-import {JagexParsers} from '../../../utils/jagex.parsers'
+import { GameMode, player } from '../../../configs/runescape.constants';
+import { Profile, Quest, RawProfile } from './player.models';
+import { JagexParsers } from '../../../utils/jagex.parsers';
 
 const parsers = new JagexParsers();
 
@@ -14,7 +14,7 @@ const getHiscoreEndpoint = (gameMode): string => {
     default:
       return player.endpoints.hiscore;
   }
-}
+};
 
 /**
  * Get full player breakdown. This function can make a request to both RuneMetrics and the Hiscores to populate
@@ -22,7 +22,7 @@ const getHiscoreEndpoint = (gameMode): string => {
  * @param display
  */
 export const getPlayer = async (display: string): Promise<Profile> => {
-  return {...await getHiscore(display), ...await getProfile(display)} as Profile;
+  return { ...(await getHiscore(display)), ...(await getProfile(display)) } as Profile;
 };
 
 /**
@@ -34,14 +34,14 @@ export const getProfile = async (display: string): Promise<Profile> => {
     const p = await got(player.endpoints.profile, {
       searchParams: {
         user: display,
-        activities: 20
-      }
+        activities: 20,
+      },
     }).json<RawProfile>();
     return parsers.parseProfile(p);
   } catch (e) {
-    return {...new Profile(), errors: [e]} as Profile;
+    return { ...new Profile(), errors: [e] } as Profile;
   }
-}
+};
 
 /**
  * Get player's Hiscore.
@@ -50,34 +50,31 @@ export const getProfile = async (display: string): Promise<Profile> => {
  */
 export const getHiscore = async (display: string, gameMode: GameMode = GameMode.Normal): Promise<Profile> => {
   try {
-    let data = await got(`${getHiscoreEndpoint(gameMode)}`,
-      {
-        searchParams:
-          {player: display}
-      });
+    const data = await got(`${getHiscoreEndpoint(gameMode)}`, {
+      searchParams: { player: display },
+    });
     return parsers.parseHiscore(display, data.body);
   } catch (e) {
-    return {...new Profile(), errors: [e]} as Profile;
+    return { ...new Profile(), errors: [e] } as Profile;
   }
-
-}
+};
 
 export const getQuests = async (display: string): Promise<Quest[]> => {
   try {
     const response = await got(player.endpoints.quests, {
       searchParams: {
-        user: display
-      }
+        user: display,
+      },
     }).json<JagexQuests>();
-    return response.quests.map(q => new Quest(q))
+    return response.quests.map((q) => new Quest(q));
   } catch (e) {
     throw Error(e);
   }
-}
+};
 
 interface JagexQuests {
   quests: Quest[];
 }
 
-export {Profile, Activities, Skills, Activity, Event, Skill} from './player.models';
-export {GameMode};
+export { Profile, Activities, Skills, Activity, Event, Skill } from './player.models';
+export { GameMode };

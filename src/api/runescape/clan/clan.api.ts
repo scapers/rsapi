@@ -1,19 +1,19 @@
 import got from 'got';
-import {clan} from '../../../configs/runescape.constants';
-import {ClanMember} from './clan.models';
+import { clan } from '../../../configs/runescape.constants';
+import { ClanMember } from './clan.models';
 
-export const getMembers = async(name: string): Promise<ClanMember[]> => {
+export const getMembers = async (name: string): Promise<ClanMember[]> => {
   try {
     const data = await got(clan.endpoints.members, {
       searchParams: {
-        clanName: name
-      }
+        clanName: name,
+      },
     });
     return parser(data.body);
   } catch (e) {
     throw new Error(e);
   }
-}
+};
 
 const parser = (raw: any): ClanMember[] => {
   const members: ClanMember[] = [];
@@ -30,4 +30,4 @@ const parser = (raw: any): ClanMember[] => {
   return members;
 };
 
-export {ClanMember} from './clan.models'
+export { ClanMember } from './clan.models';

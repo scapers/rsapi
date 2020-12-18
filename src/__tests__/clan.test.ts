@@ -1,5 +1,5 @@
-import {Clan, Player} from '../api/runescape/runescape.api';
-import {Profile} from '../api/runescape/player/player.models';
+import { Clan, Player } from '../api/runescape/runescape.api';
+import { Profile } from '../api/runescape/player/player.models';
 
 test(`Get a clan member list`, async () => {
   const result = await Clan.getMembers('maximized');

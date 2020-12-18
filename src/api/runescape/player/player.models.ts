@@ -120,7 +120,7 @@ export class Profile {
 export class Quest {
   constructor(quest: any) {
     this.name = quest.title;
-    this.status = QuestStatus[<string>quest.status];
+    this.status = QuestStatus[quest.status as string];
     this.difficulty = quest.difficulty;
     this.isMembers = quest.members;
     this.questPoints = quest.questPoints;
@@ -138,5 +138,5 @@ export class Quest {
 export enum QuestStatus {
   NOT_STARTED,
   STARTED,
-  COMPLETED
+  COMPLETED,
 }
