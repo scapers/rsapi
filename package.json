@@ -1,6 +1,6 @@
 {
   "name": "@scapers/rsapi",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "API for the popular MMORPG RuneScape",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -11,14 +11,18 @@
     "test": "jest --config jestconfig.json",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.ts\"",
     "lint": "tslint -p tsconfig.json",
-    "prepare" : "npm run build",
-    "prepublishOnly" : "npm test && npm run lint",
-    "preversion" : "npm run lint",
-    "version" : "npm run format && git add --all",
-    "postversion" : "git push && git push --tags"
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add --all",
+    "postversion": "git push && git push --tags"
   },
   "author": "Alex Kempf",
-  "keywords": ["RuneScape", "RS3", "rsapi"],
+  "keywords": [
+    "RuneScape",
+    "RS3",
+    "rsapi"
+  ],
   "license": "ISC",
   "dependencies": {
     "got": "^11.8.1",
