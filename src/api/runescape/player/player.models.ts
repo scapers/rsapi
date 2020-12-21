@@ -71,7 +71,7 @@ export class Skills {
 }
 
 export class Event {
-  date: Date;
+  date: Date | string;
   details: string;
   text: string;
 
