@@ -1,7 +1,7 @@
 import got from 'got';
-import {GameMode, player} from '../../../configs/runescape.constants';
-import {Profile, Quest, RawProfile} from './player.models';
-import {JagexParsers} from '../../../utils/jagex.parsers';
+import { GameMode, player } from '../../../configs/runescape.constants';
+import { Profile, Quest, RawProfile } from './player.models';
+import { JagexParsers } from '../../../utils/jagex.parsers';
 
 const parsers = new JagexParsers();
 
@@ -25,9 +25,9 @@ export const getPlayer = async (display: string): Promise<Profile> => {
   const profile = await getProfile(display);
   const hiscores = await getHiscore(display);
   if (profile && profile.errors && profile.errors.length > 0) {
-    return {...hiscores, events: []} as Profile;
+    return { ...hiscores, events: [] } as Profile;
   }
-  return {...(await getHiscore(display)), ...(await getProfile(display))} as Profile;
+  return { ...(await getHiscore(display)), ...(await getProfile(display)) } as Profile;
 };
 
 /**
@@ -44,7 +44,7 @@ export const getProfile = async (display: string): Promise<Profile> => {
     }).json<RawProfile>();
     return parsers.parseProfile(p);
   } catch (e) {
-    return {...new Profile(), errors: [e.toString()]} as Profile;
+    return { ...new Profile(), errors: [e.toString()] } as Profile;
   }
 };
 
@@ -56,11 +56,11 @@ export const getProfile = async (display: string): Promise<Profile> => {
 export const getHiscore = async (display: string, gameMode: GameMode = GameMode.Normal): Promise<Profile> => {
   try {
     const data = await got(`${getHiscoreEndpoint(gameMode)}`, {
-      searchParams: {player: display},
+      searchParams: { player: display },
     });
     return parsers.parseHiscore(display, data.body);
   } catch (e) {
-    return {...new Profile(), errors: [e.toString()]} as Profile;
+    return { ...new Profile(), errors: [e.toString()] } as Profile;
   }
 };
 
@@ -81,5 +81,5 @@ interface JagexQuests {
   quests: Quest[];
 }
 
-export {Profile, Activities, Skills, Activity, Event, Skill} from './player.models';
-export {GameMode};
+export { Profile, Activities, Skills, Activity, Event, Skill } from './player.models';
+export { GameMode };
