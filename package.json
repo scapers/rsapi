@@ -8,7 +8,7 @@
     "start": "ts-node dist/index.js",
     "build": "tsc",
     "watch": "nodemon -e ts --exec \"npm run build && npm run start\"",
-    "test": "jest --config jestconfig.json",
+    "test": "tsc && jest --config jestconfig.json",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.ts\"",
     "lint": "tslint -p tsconfig.json",
     "prepare": "npm run build",
