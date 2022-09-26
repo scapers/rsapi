@@ -24,16 +24,21 @@ test(`Ironman player's hiscore as profile`, async () => {
   expect(result).toBeInstanceOf(Profile);
   expect(result.display.toLowerCase() === ironmanDisplay);
 });
-
+/*
 test(`Player's RuneMetric profile`, async () => {
   const result = await Player.getProfile(normalDisplay);
   expect(result).toBeDefined();
   expect(result).toBeInstanceOf(Profile);
   expect(result.display.toLowerCase() === normalDisplay);
-});
-
+});*/
+/*
 test(`Player's quest log`, async () => {
   const result = await Player.getQuests(normalDisplay);
   expect(result).toBeDefined();
   expect(result.find((q) => q.name.toLowerCase() === `cold war`).status === QuestStatus.COMPLETED);
+});
+*/
+test(`Player's UUID`, async () => {
+  const result = await Player.getUUID('Irri');
+  expect(result).toBeDefined();
 });

@@ -64,6 +64,10 @@ export const getHiscore = async (display: string, gameMode: GameMode = GameMode.
   }
 };
 
+/**
+ * Get player's Quests
+ * @param display
+ */
 export const getQuests = async (display: string): Promise<Quest[]> => {
   try {
     const response = await got(player.endpoints.quests, {
@@ -74,6 +78,30 @@ export const getQuests = async (display: string): Promise<Quest[]> => {
     return response.quests.map((q) => new Quest(q));
   } catch (e) {
     throw Error(e);
+  }
+};
+
+export const getUUID = async (display: string): Promise<any> => {
+  try {
+    const result = await got(player.endpoints.boss, {
+      searchParams: {
+        name: display,
+      },
+    }).json();
+    if (Array.isArray(result)) {
+      const member = result[0].members.find((x) => x.name.toLowerCase() === display.toLowerCase());
+      return member.id;
+    }
+    return -1;
+  } catch (e) {
+    const uuid = parseInt(
+      JSON.parse(e.response.body)
+        .message.replace('User with id: ', '')
+        .replace(' could not be found in any groups. ', '')
+        .trim(),
+      10,
+    );
+    return uuid;
   }
 };
 

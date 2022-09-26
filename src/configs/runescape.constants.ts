@@ -5,6 +5,7 @@ export const player = {
     ironman: 'https://secure.runescape.com/m=hiscore_ironman/index_lite.ws',
     hardcore: 'https://secure.runescape.com/m=hiscore_hardcore_ironman/index_lite.ws',
     quests: 'https://apps.runescape.com/runemetrics/quests',
+    boss: 'https://secure.runescape.com/m=group_hiscores/v1/players',
   },
 };
 export const clan = {
