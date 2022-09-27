@@ -27,7 +27,7 @@ export const getPlayer = async (display: string): Promise<Profile> => {
   if (profile && profile.errors && profile.errors.length > 0) {
     return { ...hiscores, events: [] } as Profile;
   }
-  return { ...(await getHiscore(display)), ...(await getProfile(display)) } as Profile;
+  return { ...hiscores, ...profile } as Profile;
 };
 
 /**
