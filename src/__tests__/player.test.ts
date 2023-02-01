@@ -30,7 +30,7 @@ test(`Player's RuneMetric profile`, async () => {
   expect(result).toBeDefined();
   expect(result).toBeInstanceOf(Profile);
   expect(result.display.toLowerCase() === normalDisplay);
-});*/
+});
 /*
 test(`Player's quest log`, async () => {
   const result = await Player.getQuests(normalDisplay);
@@ -39,6 +39,10 @@ test(`Player's quest log`, async () => {
 });
 */
 test(`Player's UUID`, async () => {
+  const result = await Player.getUUID('Staw Hat');
+  expect(result).toBeDefined();
+});
+test(`Player's UUID where no boss scores`, async () => {
   const result = await Player.getUUID('Irri');
   expect(result).toBeDefined();
 });

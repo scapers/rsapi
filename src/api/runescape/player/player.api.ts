@@ -89,7 +89,8 @@ export const getUUID = async (display: string): Promise<any> => {
       },
     }).json();
     if (Array.isArray(result)) {
-      const member = result[0].members.find((x) => x.name.toLowerCase() === display.toLowerCase());
+      const member = result[0].members.find((x) => x.name.replace(/\s/g, '-').toLowerCase() ===
+          display.replace(/\s/g, '-').toLowerCase());
       return member.id;
     }
     return -1;
