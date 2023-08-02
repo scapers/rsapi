@@ -10,6 +10,13 @@ test(`Full player object`, async () => {
   expect(result).toBeDefined();
   expect(result.display.toLowerCase() === normalDisplay);
 });
+
+test(`Player's RuneMetric profile`, async () => {
+  const result = await Player.getProfile(normalDisplay);
+  expect(result).toBeDefined();
+  expect(result).toBeInstanceOf(Profile);
+  expect(result.display.toLowerCase() === normalDisplay);
+});
 /*
 test(`Normal player's hiscore as profile`, async () => {
   const result = await Player.getHiscore(normalDisplay);
