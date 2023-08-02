@@ -66,6 +66,7 @@ export class Skills {
   divination: Skill = new Skill();
   invention: Skill = new Skill();
   archaeology: Skill = new Skill();
+  necromancy: Skill = new Skill();
 
   [key: string]: Skill;
 }

@@ -43,13 +43,14 @@ export const skillIds: any[] = [
   { id: 25, name: 'Divination' },
   { id: 26, name: 'Invention' },
   { id: 27, name: 'Archaeology' },
+  { id: 28, name: 'Necromancy' },
 ];
 export const activities: any[] = [
-  { index: 54, name: 'easyClueScrolls' },
-  { index: 55, name: 'mediumClueScrolls' },
-  { index: 56, name: 'hardClueScrolls' },
-  { index: 57, name: 'eliteClueScrolls' },
-  { index: 58, name: 'masterClueScrolls' },
+  { index: 56, name: 'easyClueScrolls' },
+  { index: 57, name: 'mediumClueScrolls' },
+  { index: 58, name: 'hardClueScrolls' },
+  { index: 59, name: 'eliteClueScrolls' },
+  { index: 60, name: 'masterClueScrolls' },
 ];
 
 export enum GameMode {
