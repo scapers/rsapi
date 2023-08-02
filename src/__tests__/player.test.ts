@@ -1,6 +1,6 @@
 import { Player } from '../api/runescape/runescape.api';
 import { GameMode, Profile } from '../api/runescape/player/player.api';
-import {QuestStatus, RawProfile} from '../api/runescape/player/player.models';
+import { QuestStatus, RawProfile } from '../api/runescape/player/player.models';
 
 const normalDisplay = 'sync';
 const ironmanDisplay = 'syncing';
