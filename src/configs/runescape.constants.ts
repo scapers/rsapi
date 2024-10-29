@@ -14,6 +14,13 @@ export const clan = {
   },
 };
 
+export const groupIronman = {
+  endpoints: {
+    hiscore: 'https://secure.runescape.com/m=runescape_gim_hiscores/v1/groupScores',
+    group: 'https://rs.runescape.com/_next/data/RLKvxfFcuK5F_XBoHmYIg/en-GB/hiscores/group-ironman/competitive/',
+  },
+};
+
 export const skillIds: any[] = [
   { id: 0, name: 'Attack' },
   { id: 1, name: 'Defence' },
