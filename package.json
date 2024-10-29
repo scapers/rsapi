@@ -1,6 +1,6 @@
 {
   "name": "@scapers/rsapi",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "API for the popular MMORPG RuneScape",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
